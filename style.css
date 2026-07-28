@@ -1,0 +1,732 @@
+/* ===================================
+   RESET
+=================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:'Poppins',sans-serif;
+}
+
+/* ===================================
+   BACKGROUND
+=================================== */
+
+body{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ffd1dc 0%,
+        #ffe4ec 35%,
+        #ffd7ef 65%,
+        #fff1f7 100%
+    );
+
+    position:relative;
+
+}
+
+/* Animated Glow */
+
+.background{
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+
+    radial-gradient(circle at 20% 20%,
+    rgba(255,255,255,.45),
+    transparent 35%),
+
+    radial-gradient(circle at 80% 70%,
+    rgba(255,170,200,.35),
+    transparent 40%),
+
+    radial-gradient(circle at center,
+    rgba(255,255,255,.18),
+    transparent 70%);
+
+    animation:bgMove 12s ease-in-out infinite;
+
+}
+
+@keyframes bgMove{
+
+0%,100%{
+
+transform:scale(1);
+
+}
+
+50%{
+
+transform:scale(1.08);
+
+}
+
+}
+
+/* ===================================
+   CONTAINER
+=================================== */
+
+.container{
+
+    width:100%;
+    height:100%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    perspective:1800px;
+
+    position:relative;
+
+}
+
+/* ===================================
+   ENVELOPE
+=================================== */
+
+.envelope{
+
+    position:relative;
+
+    width:340px;
+    height:220px;
+
+    transform-style:preserve-3d;
+
+    animation:float 4s ease-in-out infinite;
+
+}
+
+/* Floating */
+
+@keyframes float{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-12px);
+
+}
+
+}
+
+/* ===================================
+   SHADOW
+=================================== */
+
+.shadow{
+
+position:absolute;
+
+left:50%;
+
+bottom:-28px;
+
+width:240px;
+
+height:28px;
+
+background:rgba(0,0,0,.22);
+
+border-radius:50%;
+
+transform:translateX(-50%);
+
+filter:blur(16px);
+
+animation:shadowMove 4s infinite;
+
+}
+
+@keyframes shadowMove{
+
+0%,100%{
+
+transform:translateX(-50%) scale(1);
+
+opacity:.25;
+
+}
+
+50%{
+
+transform:translateX(-50%) scale(.85);
+
+opacity:.12;
+
+}
+
+}
+
+/* ===================================
+   BACK OF ENVELOPE
+=================================== */
+
+.back{
+
+position:absolute;
+
+width:100%;
+
+height:100%;
+
+background:#ff8fb9;
+
+border-radius:12px;
+
+box-shadow:
+
+0 20px 60px rgba(0,0,0,.25);
+
+overflow:hidden;
+
+}
+
+/* ===================================
+   FRONT
+=================================== */
+
+.front{
+
+position:absolute;
+
+bottom:0;
+
+width:100%;
+
+height:100%;
+
+background:#ff73aa;
+
+clip-path:polygon(0 100%,50% 48%,100% 100%);
+
+z-index:5;
+
+}
+
+/* ===================================
+   FLAP
+=================================== */
+
+.flap{
+
+position:absolute;
+
+width:100%;
+
+height:100%;
+
+background:#ff98bf;
+
+clip-path:polygon(0 0,100% 0,50% 62%);
+
+transform-origin:top;
+
+transition:1.2s cubic-bezier(.22,1,.36,1);
+
+z-index:8;
+
+}
+/* ===================================
+   LETTER (Hidden Inside Envelope)
+=================================== */
+
+.letter{
+
+    position:absolute;
+
+    left:20px;
+    bottom:8px;
+
+    width:300px;
+    height:410px;
+
+    background:
+    linear-gradient(to bottom,#fffdfb,#fff6f8);
+
+    border-radius:18px;
+
+    padding:30px;
+
+    text-align:center;
+
+    box-shadow:
+    0 15px 40px rgba(0,0,0,.20);
+
+    transform:translateY(250px);
+
+    transition:
+    transform 1.5s cubic-bezier(.22,1,.36,1);
+
+    z-index:2;
+
+    overflow:hidden;
+
+}
+
+/* Paper Texture */
+
+.letter::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background-image:
+    radial-gradient(rgba(0,0,0,.03) 1px, transparent 1px);
+
+    background-size:8px 8px;
+
+    opacity:.35;
+
+    pointer-events:none;
+
+}
+
+/* ===================================
+   LETTER TEXT
+=================================== */
+
+.letter h1{
+
+    font-family:'Great Vibes',cursive;
+
+    font-size:52px;
+
+    color:#e91e63;
+
+}
+
+.letter h2{
+
+    font-family:'Great Vibes',cursive;
+
+    margin-top:25px;
+
+    color:#d81b60;
+
+    font-size:40px;
+
+}
+
+.letter h3{
+
+    margin-top:6px;
+
+    color:#777;
+
+    font-weight:400;
+
+}
+
+.letter p{
+
+    margin-top:18px;
+
+    line-height:1.7;
+
+    color:#444;
+
+}
+
+.letter b{
+
+    color:#e91e63;
+
+}
+
+.letter hr{
+
+    margin:18px auto;
+
+    width:70%;
+
+    border:none;
+
+    height:2px;
+
+    background:
+    linear-gradient(
+        to right,
+        transparent,
+        #ff5f9d,
+        transparent
+    );
+
+}
+
+.letter small{
+
+    display:block;
+
+    margin-top:20px;
+
+    color:#888;
+
+    font-style:italic;
+
+}
+
+/* ===================================
+   WAX SEAL
+=================================== */
+
+.seal{
+
+    position:absolute;
+
+    left:50%;
+    top:58%;
+
+    transform:translate(-50%,-50%);
+
+    width:68px;
+    height:68px;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(circle,
+    #ff4d6d,
+    #b0003a);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:28px;
+
+    color:#fff;
+
+    box-shadow:
+    0 8px 25px rgba(0,0,0,.25);
+
+    z-index:10;
+
+}
+
+/* ===================================
+   OPEN BUTTON
+=================================== */
+
+.open-btn{
+
+    position:absolute;
+
+    bottom:-75px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    padding:14px 34px;
+
+    border-radius:40px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ff4d88,
+        #ff7eb3
+    );
+
+    color:#fff;
+
+    font-weight:700;
+
+    letter-spacing:3px;
+
+    cursor:pointer;
+
+    user-select:none;
+
+    box-shadow:
+    0 10px 30px rgba(255,0,100,.35);
+
+    transition:.35s;
+
+}
+
+.open-btn:hover{
+
+    transform:
+    translateX(-50%)
+    scale(1.08);
+
+    box-shadow:
+    0 15px 40px rgba(255,0,120,.45);
+
+}
+
+/* ===================================
+   OPEN ANIMATION
+=================================== */
+
+.envelope.open .flap{
+
+    transform:rotateX(180deg);
+
+}
+
+.envelope.open .letter{
+
+    transform:translateY(-180px);
+
+}
+/* ===================================
+   FLOATING HEARTS
+=================================== */
+
+#particles{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:1;
+}
+
+.heart{
+    position:absolute;
+    bottom:-50px;
+    color:#ff4d88;
+    animation:heartFloat linear forwards;
+    opacity:.85;
+}
+
+@keyframes heartFloat{
+
+    0%{
+        transform:translateY(0) scale(.5) rotate(0deg);
+        opacity:0;
+    }
+
+    15%{
+        opacity:1;
+    }
+
+    100%{
+        transform:
+        translateY(-120vh)
+        translateX(60px)
+        scale(1.4)
+        rotate(360deg);
+
+        opacity:0;
+    }
+
+}
+
+/* ===================================
+   GOLDEN SPARKLES
+=================================== */
+
+.spark{
+
+    position:absolute;
+
+    width:6px;
+    height:6px;
+
+    border-radius:50%;
+
+    background:#ffd700;
+
+    box-shadow:
+    0 0 10px #ffd700,
+    0 0 25px #fff;
+
+    animation:spark 2s linear forwards;
+
+}
+
+@keyframes spark{
+
+    from{
+
+        opacity:1;
+        transform:scale(.2);
+
+    }
+
+    to{
+
+        opacity:0;
+        transform:scale(3);
+
+    }
+
+}
+
+/* ===================================
+   GLOW EFFECT
+=================================== */
+
+.envelope::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-18px;
+
+    border-radius:25px;
+
+    background:
+
+    radial-gradient(circle,
+    rgba(255,192,203,.45),
+    transparent 70%);
+
+    filter:blur(30px);
+
+    z-index:-1;
+
+}
+
+/* ===================================
+   WAX SEAL GLOW
+=================================== */
+
+.seal{
+
+    animation:sealGlow 2s ease-in-out infinite alternate;
+
+}
+
+@keyframes sealGlow{
+
+    from{
+
+        box-shadow:
+        0 0 12px rgba(255,70,120,.4);
+
+    }
+
+    to{
+
+        box-shadow:
+        0 0 30px rgba(255,70,120,.9);
+
+    }
+
+}
+
+/* ===================================
+   MUSIC BUTTON
+=================================== */
+
+#musicBtn{
+
+    position:fixed;
+
+    right:25px;
+    top:25px;
+
+    width:58px;
+    height:58px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:white;
+
+    font-size:24px;
+
+    cursor:pointer;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.2);
+
+    transition:.3s;
+
+    z-index:999;
+
+}
+
+#musicBtn:hover{
+
+    transform:scale(1.1);
+
+}
+
+/* ===================================
+   MOBILE
+=================================== */
+
+@media(max-width:600px){
+
+    .envelope{
+
+        width:290px;
+        height:190px;
+
+    }
+
+    .letter{
+
+        width:255px;
+        height:360px;
+
+        left:17px;
+
+        padding:22px;
+
+    }
+
+    .letter h1{
+
+        font-size:42px;
+
+    }
+
+    .letter h2{
+
+        font-size:32px;
+
+    }
+
+    .seal{
+
+        width:58px;
+        height:58px;
+
+        font-size:24px;
+
+    }
+
+    .open-btn{
+
+        font-size:14px;
+
+        padding:12px 28px;
+
+    }
+
+}
